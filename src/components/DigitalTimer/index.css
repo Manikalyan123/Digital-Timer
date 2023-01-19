@@ -1,0 +1,118 @@
+/* Write your CSS here */
+.image-Cont {
+  height: 70vh;
+  width: 50vw;
+  background-size: cover;
+  background-image: url('https://assets.ccbp.in/frontend/react-js/digital-timer-elapsed-bg.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.time-display-cont {
+  height: 170px;
+  width: 170px;
+  background-color: white;
+  border-radius: 85px;
+}
+.Main-Cont {
+  background-image: linear-gradient(to right, #ffffff, #cffcf1);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Cont {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.pause-reset-Cont {
+  width: 24vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.play-cont {
+  width: 10vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.reset-cont {
+  width: 10vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.content-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.time-display-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.counter {
+  color: #00d9f5;
+  font-weight: bold;
+  font-size: 35px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.passage {
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 0px;
+}
+.plus {
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.play-text {
+  font-size: 24px;
+  cursor: pointer;
+}
+.pause-image {
+  height: 32px;
+  width: 33px;
+  cursor: pointer;
+}
+.reset {
+  height: 32px;
+  width: 33px;
+}
+.play-image {
+  height: 32px;
+  width: 33px;
+}
+.change-num {
+  width: 50px;
+  height: 33px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, lightgreen, #defafe, #00d9f5);
+}
+.change-num-cont {
+  width: 8vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.play-pause-btn {
+  border: none;
+  background-color: transparent;
+}
