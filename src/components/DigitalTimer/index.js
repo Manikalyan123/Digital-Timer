@@ -1,7 +1,6 @@
 // Write your code here
 import {Component} from 'react'
 import './index.css'
-import {connect} from 'http2'
 
 class DigitalTimer extends Component {
   state = {play: false, timeInSec: 0, minTimeInMin: 25}
@@ -30,6 +29,10 @@ class DigitalTimer extends Component {
 
   onClickPlayPause = () => {
     const {play, timeInSec, minTimeInMin} = this.state
+    const isTimeCompleted = timeInSec === minTimeInMin * 60
+    if (isTimeCompleted) {
+      this.setState({timeInSec: 0})
+    }
     if (play) {
       this.clearInterval(this.intervalId)
     } else {
@@ -45,9 +48,10 @@ class DigitalTimer extends Component {
   onIncrement = () => {
     this.setState(prevState => ({minTimeInMin: prevState.minTimeInMin + 1}))
   }
+
   onDecrement = () => {
     const {minTimeInMin} = this.state
-    if (minTimeInMin > 0) {
+    if (minTimeInMin > 1) {
       this.setState(prevState => ({minTimeInMin: prevState.minTimeInMin - 1}))
     }
   }
@@ -66,33 +70,34 @@ class DigitalTimer extends Component {
           <img
             className="pause-image"
             src="https://assets.ccbp.in/frontend/react-js/pause-icon-img.png"
-            alt="pause"
+            alt="pause icon"
           />
         </button>
 
-        <p className="play-text">Running</p>
+        <p className="play-text">Pause</p>
       </div>
     ) : (
       <div className="play-cont">
         <button
           onClick={this.onClickPlayPause}
           type="button"
-          className="play-pause-btn"
+          className="play-pause-btn play-text"
         >
           <img
             className="pause-image"
             src="https://assets.ccbp.in/frontend/react-js/play-icon-img.png"
-            alt="pause"
-          />
+            alt="play icon"
+          />{' '}
+          Start
         </button>
-        <p className="play-text">Start</p>
       </div>
     )
     return buttonCode
   }
 
   render() {
-    const {minTimeInMin, play, timeInSec} = this.state
+    const {minTimeInMin, play} = this.state
+    const isRunning = play ? 'Running' : 'Paused'
     return (
       <div className="Main-Cont">
         <h1>Digital Timer</h1>
@@ -100,7 +105,7 @@ class DigitalTimer extends Component {
           <div className="image-Cont">
             <div className="time-display-cont">
               <h1 className="counter">{this.visibleTimer()}</h1>
-              <p className="plus">Paused</p>
+              <p className="plus">{isRunning}</p>
             </div>
           </div>
 
@@ -111,23 +116,24 @@ class DigitalTimer extends Component {
                 <button
                   onClick={this.onClickResetBtn}
                   type="button"
-                  className="play-pause-btn"
+                  className="play-pause-btn play-text"
                 >
                   <img
                     className="reset"
                     src="https://assets.ccbp.in/frontend/react-js/reset-icon-img.png"
-                    alt=""
+                    alt="reset icon"
                   />
-                  <p1 className="play-text">reset</p1>
+                  Reset
                 </button>
               </div>
             </div>
-            <p className="passage">Set time limit</p>
+            <p className="passage">Set Timer limit</p>
             <div className="change-num-cont">
               <button
                 type="button"
                 className="play-pause-btn"
                 onClick={this.onDecrement}
+                disabled={play}
               >
                 <p className="plus">-</p>
               </button>
@@ -138,6 +144,7 @@ class DigitalTimer extends Component {
                 type="button"
                 className="play-pause-btn"
                 onClick={this.onIncrement}
+                disabled={play}
               >
                 <p className="plus">+</p>
               </button>
